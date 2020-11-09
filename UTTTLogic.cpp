@@ -116,7 +116,7 @@ void UTTT_logic() {
 	cout << "      Game area\n" << "\n\n";
 	game.print_area();
 	cout << "\n\n";
-	game.get_victory() > 0 ? cout << "Player " << game.get_victory() << " won!" : cout << "Draw";
+	game.get_victory() < 3 ? cout << "Player " << game.get_victory() << " won!" : cout << "Draw";
 	cout << "\n\n\n";
 	system("PAUSE");
 }

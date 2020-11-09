@@ -14,7 +14,7 @@ private:
 	int area[9][3][3]{};
 	int total_signs[3][3]{};
 	// Status in terms of continuation of the game
-	int area_status[3][3]{};
+	int area_status[3][3]{3,3,3,3,3,3,3,3};
 	// Variables to control the flow of game
 	int victory = 0;
 	int penultimate_area = 0;
