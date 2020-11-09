@@ -1,0 +1,10 @@
+﻿  Decision.cpp
+  Scan.cpp
+  UTTTClassPrintArea.cpp
+  UTTTClassSetters.cpp
+  UTTTLogic.cpp
+D:\Visual Studio\repos\UTTTGame\UTTTGame\UTTTLogic.cpp(8,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Utility.cpp
+  main.cpp
+  Generating Code...
+  UTTTGame.vcxproj -> D:\Visual Studio\repos\UTTTGame\Debug\UTTTGame.exe

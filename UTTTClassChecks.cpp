@@ -11,29 +11,31 @@ int UltimateTicTacToe::check_victory(int **area, int player, int row, int column
 		return player;
 
 	// Hypotenuse scan
-	// Checks cell 1, 5, 9 which convert via convert_cell
+	// Checks cell 1, 5, 9 which are converted via convert_cell
 	if (decision == 0 || decision == 8) {
 		// +4
-		return hypotenuse_scan(area, player, 1, 4, 3);
+		return diagonal_scan(area, player, 1, 4, 3);
 	}
-	// Checks cell 1, 3, 5, 7, 9 which convert via convert_cell
+	// Checks cell 1, 3, 5, 7, 9 which are converted via convert_cell
 	if (decision == 4) {
 		// +2
-		return hypotenuse_scan(area, player, 1, 2, 5);
+		return diagonal_scan(area, player, 1, 2, 5);
 	}
-	// Checks cell 3, 5, 7 which convert via convert_cell
+	// Checks cell 3, 5, 7 which are converted via convert_cell
 	if (decision == 2 || decision == 6) {
 		// +2
-		return hypotenuse_scan(area, player, 3, 2, 3);
+		return diagonal_scan(area, player, 3, 2, 3);
 	}
-	// There are no winning move
+	// There are no winning "sign set"
 	return 0;
 }
 
 bool UltimateTicTacToe::check_draw(int **area) {
+	// If current area has 9 signs on - draw
+	// This method will not be called if this area already has status not 0
 	int total_signs = 0;
-	for (int row = 0; row < SIZE; row++)
-		for (int column = 0; column < SIZE; column++)
+	for (int row = 0; row < 3; row++)
+		for (int column = 0; column < 3; column++)
 			if (area[row][column] > 0)
 				total_signs++;
 
