@@ -1,12 +1,12 @@
 #include "Decision.h"
 #include "UltimateTicTacToeClass.h"
 
-void print_decision(int **area, const int SIZE) {
-	// Row
-	for (int row = 0, number = 0; row < SIZE; row++) {
+void print_decision(int **area) {
+	// Row change
+	for (int row = 0, number = 0; row < 3; row++) {
 		cout << "\t";
-		// Column
-		for (int column = 0; column < SIZE; column++) {
+		// Column change
+		for (int column = 0; column < 3; column++) {
 			number++;
 			area[row][column] == 0 ? cout << number : cout << "x";
 			cout << " ";
@@ -32,12 +32,17 @@ void convert_cell(int& x, int& y, int decision) {
 	}
 }
 
+////////////////////////////////////////////////
+// I need to fix it to remove option variable //
+////////////////////////////////////////////////
 int get_decision(int thickness, UltimateTicTacToe& value, int option) {
+	// Variables to store decision and its indexes
 	int decision, row, column;
+
 	while (true) {
 		do {
 			decision = _getch();
-			// getch takes ASCII table value, that is 49 for 1 and 57 for 9
+			// _getch takes ASCII table value, that is 49 for 1 and 57 for 9
 			// so I substract 48 to take value from 1 to 9
 			// and -1 to take value from 0 to 8
 			decision -= 49;
@@ -46,6 +51,7 @@ int get_decision(int thickness, UltimateTicTacToe& value, int option) {
 				cout << "You can't choice the number out of range. Retry.\n";
 		} while (decision < 0 || decision > 8);
 
+		// Convert decision to matrix indexes
 		convert_cell(row, column, decision);
 
 		// Option 1 is for regular areas
