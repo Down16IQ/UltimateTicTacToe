@@ -14,7 +14,7 @@ private:
 	int area[9][3][3]{};
 	int total_signs[3][3]{};
 	// Status in terms of continuation of the game
-	int area_status[3][3]{};
+	int area_status[3][3]{3,3,3,3,3,3,3,3};
 	// Variables to control the flow of game
 	int victory = 0;
 	int penultimate_area = 0;
@@ -24,10 +24,12 @@ private:
 	int decision = 0;
 	int row = 0, column = 0;
 	int row_last = 0, column_last = 0;
+	// To know where the victory were, if it were
+	int row_current_area = 0, column_current_area = 0;
 public:
 	
 	void print_area();
-	int check_victory(int **area, int player);
+	int check_victory(int **area, int player, int row, int column);
 	bool check_draw(int** area);
 
 	int get_SIZE();
@@ -41,15 +43,20 @@ public:
 	int get_chosen_area();
 	int get_area_index(int thickness, int width, int height);
 	int** get_area(int decision);
+
+	
+	int get_row();
+	int get_column(); 
 	int get_row_last();
 	int get_column_last();
-	int get_row();
-	int get_column();
+	int get_row_current_area();
+	int get_column_current_area();
 
 	void set_area_status(int player, int row, int column);
 	void set_victory(int v);
 	void set_current_decision(int decision);
 	void set_row_column();
+	void set_row_column_current_area();
 	void set_last_row_column();
 	void set_penultimate_area(int penultimate_area);
 	void set_last_area(int last_area);

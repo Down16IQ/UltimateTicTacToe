@@ -27,7 +27,7 @@ void UTTT_logic() {
 	// Set row and column via converting decision
 	game.set_row_column();
 
-	while (!game.get_victory()) {
+	while (game.get_victory() == 0) {
 		// Clean screen
 		system("CLS");
 
@@ -72,12 +72,13 @@ void UTTT_logic() {
 		// Set current and last row and column via converting decision
 		game.set_last_row_column();
 		game.set_row_column();
+		game.set_row_column_current_area();
 
 		// Set sign
 		game.set_sign(player);
 		
 		// Check victory on area
-		if (game.check_victory(game.get_area(game.get_current_area()), player)) {
+		if (game.check_victory(game.get_area(game.get_current_area()), player, game.get_row(), game.get_column())) {
 			int row, column;
 			convert_cell(row, column, chosen ? game.get_chosen_area() : game.get_current_area());
 			game.set_area_status(player, row, column);
@@ -95,12 +96,12 @@ void UTTT_logic() {
 		}
 
 		// Check victory on main area
-		if (game.check_victory(game.get_area_status(), player))
+		if (game.check_victory(game.get_area_status(), player, game.get_row_current_area(), game.get_column_current_area()))
 			game.set_victory(player);
 
 		// Check draw on main area
 		if (game.check_draw(game.get_area_status()) && !game.get_victory())
-			game.set_victory(0);
+			game.set_victory(3);
 
 		// Swap player
 		player = swap_players(player);
@@ -115,7 +116,7 @@ void UTTT_logic() {
 	cout << "      Game area\n" << "\n\n";
 	game.print_area();
 	cout << "\n\n";
-	game.get_victory() > 0 ? cout << "Player " << game.get_victory() << " won!" : cout << "Draw";
+	game.get_victory() < 3 ? cout << "Player " << game.get_victory() << " won!" : cout << "Draw";
 	cout << "\n\n\n";
 	system("PAUSE");
 }
