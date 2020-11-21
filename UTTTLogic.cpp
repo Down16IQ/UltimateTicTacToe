@@ -3,6 +3,13 @@
 #include "Decision.h"
 #include "Utility.h"
 
+// To random player
+#include <time.h>
+// using std
+#include <iostream>
+// Print messages
+using std::cout;
+
 void UTTT_logic() {
 	// To get random player
 	srand(time(NULL));
@@ -48,7 +55,7 @@ void UTTT_logic() {
 		// Print whole area
 		game.print_area(game);
 
-		// Message about current area and quastion about decision
+		// Message about current area and question about decision
 		cout << "\nCurrent area: " << game.get_current_area() + 1;
 
 		// If player is sent to already finished area
@@ -81,8 +88,6 @@ void UTTT_logic() {
 
 			// Message about chosen area
 			cout << "\nCurrent area: " << game.get_current_area() + 1;
-
-		
 		}
 
 		// Question about choice of cell
@@ -108,7 +113,7 @@ void UTTT_logic() {
 		convert_cell(row, column, chosen ? game.get_chosen_area() : game.get_current_area());
 
 		// Check victory on area
-		if (game.check_victory(game.get_area(game.get_current_area()), player, game.get_row(), game.get_column())) {
+		if (game.check_victory(game.get_area(game.get_current_area()), player, game.get_row(), game.get_column(), chosen ? game.get_chosen_area() : game.get_current_area())) {
 
 			// Change area status to victory of current player
 			game.set_area_status(player, row, column);
@@ -134,7 +139,7 @@ void UTTT_logic() {
 		}
 
 		// Check victory on main area
-		if (game.check_victory(game.get_area_status(), player, game.get_row_current_area(), game.get_column_current_area()))
+		if (game.check_victory(game.get_area_status(), player, game.get_row_current_area(), game.get_column_current_area(), game.get_current_area()))
 			game.set_victory(player);
 
 		// Check draw on main area

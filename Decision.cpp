@@ -1,18 +1,23 @@
 #include "Decision.h"
 #include "UltimateTicTacToeClass.h"
 
+// using std
+#include <iostream>
+// getch
+#include <conio.h>
+
 void print_decision(int **area) {
 	// Row change
 	for (int row = 0, number = 0; row < 3; row++) {
-		cout << "\t";
+		std::cout << "\t";
 		// Column change
 		for (int column = 0; column < 3; column++) {
 			number++;
-			area[row][column] == 0 ? cout << number : cout << "x";
-			cout << " ";
+			area[row][column] == 0 ? std::cout << number : std::cout << "x";
+			std::cout << " ";
 			// 0 = no sign 1 = player's 1 sign 2 = player's 2 sign
 		}
-		cout << '\n';
+		std::cout << '\n';
 	}
 }
 
@@ -48,7 +53,7 @@ int get_decision(int thickness, UltimateTicTacToe& value, int option) {
 			decision -= 49;
 
 			if (decision < 0 || decision > 8)
-				cout << "You can't choice the number out of range. Retry.\n";
+				std::cout << "You can't choice the number out of range. Retry.\n";
 		} while (decision < 0 || decision > 8);
 
 		// Convert decision to matrix indexes
@@ -65,8 +70,8 @@ int get_decision(int thickness, UltimateTicTacToe& value, int option) {
 				return decision;
 
 		if (option == 1)
-			cout << "You can't choice this one because it is already signed. Retry.\n";
+			std::cout << "You can't choice this one because it is already signed. Retry.\n";
 		else
-			cout << "You can't choice this one because it is already finished. Retry.\n";
+			std::cout << "You can't choice this one because it is already finished. Retry.\n";
 	}
 }

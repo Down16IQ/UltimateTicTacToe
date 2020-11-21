@@ -1,6 +1,11 @@
 #include "UltimateTicTacToeClass.h"
 #include "Utility.h"
 
+// using std
+#include <iostream>
+// Print result
+using std::cout;
+
 void UltimateTicTacToe::print_area(UltimateTicTacToe& value) {
 	// Change the row of matrix
 	for (int i_counter = 0, section_of_areas = 0, row_matrix = 0, row_status = 0; i_counter < AREAS; i_counter++, row_matrix++) {

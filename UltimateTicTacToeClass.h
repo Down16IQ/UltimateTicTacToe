@@ -1,42 +1,40 @@
 #ifndef ULTIMATETICTACTOECLASS_H
 #define ULTIMATETICTACTOECLASS_H
 
-// using std
-#include <iostream>
-// cout
-using std::cout;
-
 class UltimateTicTacToe {
 
 private:
 	// Consts to set them as condition in loops to make reading more easier
 	// or to set them as amount of cells in arrays/matrixes
-	int const SIZE = 3, AREAS = 9;
+	static int const SIZE = 3, AREAS = 9;
 
 	// 9 areas 3x3
-	int area[9][3][3]{};
+	int ***area;
 
 	// Status in terms of continuation of the game
 	// Main area that takes result of games
-	int area_status[3][3]{};
+	int **area_status;
 
 	// Variables to control the flow of game
 
 	// Result of game is needed to control the end of game and to display the winner or draw
-	int victory = 0;
+	int victory;
 	// Current area is needed to convert its index in regular passes
-	int current_area = 0;
+	int current_area;
 	// Chosen area is needed to convert its index if it will be on win/draw move
-	int chosen_area = 0;
+	int chosen_area;
 	// Decision is needed to remember which cell user have selected
-	int decision = 0;
+	int decision;
 	// Row and column are needed to remember current area's indexes
-	int row = 0, column = 0;
+	int row, column;
 	// Last row and column are needed to remember last area's indexes
 	// To know where the victory were, if it were
-	int row_current_area = 0, column_current_area = 0;
+	int row_current_area, column_current_area;
 
 public:
+
+	// Constructor
+	UltimateTicTacToe();
 
 	// All Setters
 	void set_victory(int v);
@@ -74,7 +72,7 @@ public:
 
 
 	// Checks
-	int check_victory(int** area, int player, int row, int column);
+	int check_victory(int** area, int player, int row, int column, int area_to_check);
 	bool check_draw(int** area);
 
 

@@ -1,5 +1,8 @@
 #include "Utility.h"
 
+// using std
+#include <iostream>
+
 int swap_players(int player) {
 	// If it was player 1's turn, it will pass to player 2
 	return player == 1 ? 2 : 1;
@@ -11,5 +14,5 @@ char convert_number_to_sign(int** area, int row, int column, int option) {
 }
 
 void game_result(int result) {
-	result < 3 ? cout << "Player " << result << " won!" : cout << "Draw";
+	result < 3 ? std::cout << "Player " << result << " won!" : std::cout << "Draw";
 }

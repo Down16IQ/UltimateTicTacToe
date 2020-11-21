@@ -1,7 +1,7 @@
 #include "UltimateTicTacToeClass.h"
 #include "Scan.h"
 
-int UltimateTicTacToe::check_victory(int **area, int player, int row, int column) {
+int UltimateTicTacToe::check_victory(int **area, int player, int row, int column, int area_to_check) {
 	// Vertical scan
 	if (vertical_scan(area, player, column))
 		return player;
@@ -12,17 +12,19 @@ int UltimateTicTacToe::check_victory(int **area, int player, int row, int column
 
 	// Hypotenuse scan
 	// Checks cell 1, 5, 9 which are converted via convert_cell
-	if (decision == 0 || decision == 8) {
+
+	// decision = area_to_check
+	if (area_to_check == 0 || area_to_check == 8) {
 		// +4
 		return diagonal_scan(area, player, 1, 4, 3);
 	}
 	// Checks cell 1, 3, 5, 7, 9 which are converted via convert_cell
-	if (decision == 4) {
+	if (area_to_check == 4) {
 		// +2
 		return diagonal_scan(area, player, 1, 2, 5);
 	}
 	// Checks cell 3, 5, 7 which are converted via convert_cell
-	if (decision == 2 || decision == 6) {
+	if (area_to_check == 2 || area_to_check == 6) {
 		// +2
 		return diagonal_scan(area, player, 3, 2, 3);
 	}
